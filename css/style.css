@@ -1,0 +1,130 @@
+#pesquisa {
+    border: none;
+    width: 85%;
+    margin-left: 2%;
+}
+
+#pesquisa:focus {
+    border: none;
+    outline: none;
+}
+
+#lupa {
+    width: 4%;
+    margin: 2%;
+}
+
+.buscar {
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.inicio {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inicio h1 {
+    font-family: "Abril Fatface", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 70px;
+    margin-top: 1%;
+}
+
+#logo-inicio {
+    width: 30%;
+}
+
+#subtitulo {
+    font-size: 20px;
+    margin-top: 1%;
+    font-weight: 900;
+}
+
+.options {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 4% 10% 2% 10%;
+}
+
+.options button {
+    font-weight: 500;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    width: 7%;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.options button:hover {
+    font-weight: 300;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+#titulo-destaques {
+    margin-top: 5%;
+    margin-left: 10%;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.data {
+    color: purple;
+    font-weight: 700;
+}
+
+.button-compra {
+    display: flex;
+    justify-content: center;
+}
+
+.button-compra button {
+    background-color: #800080;
+    border: 1px solid #800080;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.button-compra button:hover {
+    background-color: white;
+    color: #800080;
+    font-weight: 200;
+}
+
+.card-elementos {
+    margin: 4% 10% 2% 10%;
+    display: grid;
+    column-gap: 10%;
+    grid-template-columns: auto auto auto auto;
+}
+.card {
+    margin-bottom: 20%;
+}
+
+footer {
+    background-color: purple;
+    color: white;
+}
+
+footer p {
+    padding: 5%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    background-color: #800080;
+    color: white;
+}
