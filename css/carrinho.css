@@ -1,0 +1,109 @@
+*{
+    margin: none;
+    padding: 0;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid black;
+    gap: 100vh;
+    padding: 15px;
+}
+.leftHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.leftHeader b{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.rightHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.topics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 30px;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.total{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.rightCard{
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+}
+.rightCard p{
+    font-weight: bold;
+    font-size: 20px;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    gap:-5vh;
+}
+.container{
+    display: flex;
+    flex-direction: row;   
+}
+.leftContent{
+    margin-left: 15vh;
+    padding-top: 10vh;
+    padding-right: 10px;
+    border-right: 1px solid black;
+    height:  80vh;
+}
+.rightContent{
+    padding-left: 5vh;
+    padding-top: 5vh;
+}
+.rightContent p{
+    font-weight: bolder;
+    font-size: 25px;
+
+}
+.paymentMethods{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.method{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+    gap: 30vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+.method p{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.methodDescription{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}

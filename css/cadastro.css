@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+}
+
+.container {
+    background-attachment: fixed;
+    background-image: url(imagens/celebre2.png), radial-gradient(#ffff);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 100vh;
+}
+.imgCelebre{
+    width: 1340px;
+    height: 658px;
+}
+
+.containerCadastro {
+    background-color: #fff;
+    width: 1000px;
+    height: 500px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: left;
+    text-decoration: underline #800080;
+    margin-bottom: 20px;
+}
+
+/* Organização em colunas para dados pessoais e endereço */
+.form-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cadastroleft, .cadastroright {
+    width: 45%;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button, .btn {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin: 10px auto 0;
+    background-color: #800080;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+}
+/* Estilos para os campos de gênero */
+.cadastroleftfooter {
+    display: inline-block;
+    justify-content: space-between;
+    align-items: left;
+    width: 500px;
+    height: 40px;
+    margin-right: auto;
+    gap: 10px;
+}
+.cadastroleftfooter input {
+    width: auto;
+}
+p{
+    padding: 5px;
+}
+.direcionarLogin{
+    text-align: center;
+    padding: 12px;
+}
+.checkbox-margin{
+    margin: 5px 2px 10px 2px;
+}
