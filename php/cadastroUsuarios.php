@@ -1,37 +1,43 @@
-<?php
-    include_once('conexao.php');
+<?php 
+include_once('conexao.php');
 
-    try {
-        //depois do INSERT INTO, mudar o nome da coluna,    
-        //e caso as colunas sejam diferentes das que eu deixei especificado ali dps do INSERT INTO ExampleTable(params)
-        $stmt = $db->prepare("INSERT INTO ExampleTable 
-            (nome, sobrenome, email, celular, senha, confirmarSenha, cep, cidade, endereco, bairro, numero, estado, pais, genero) 
+if ($conexao) {
+
+    $sqlCreateTable = "CREATE TABLE IF NOT EXISTS Usuario (
+        id integer AUTO_INCREMENT primary Key,
+        nome VARCHAR(100),
+        sobrenome VARCHAR(100),
+        email VARCHAR(100),
+        celular VARCHAR(100),
+        senha VARCHAR(100),
+        cep VARCHAR(100),
+        cidade VARCHAR(100),
+        endereco VARCHAR(100),
+        bairro VARCHAR(100),
+        numero VARCHAR(100),
+        estado VARCHAR(100),
+        pais VARCHAR(100),
+        genero VARCHAR(100)
+    )";
+    
+    if (mysqli_query($conexao, $sqlCreateTable)) {
+        $sqlInsert = "INSERT INTO Usuario 
+            (nome, sobrenome, email, celular, senha, cep, cidade, endereco, bairro, numero, estado, pais, genero) 
             VALUES 
-            (:nome, :sobrenome, :email, :celular, :senha, :cep, :cidade, :endereco, :bairro, :numero, :estado, :pais, :genero)");
+            ('{$_POST['nome']}', '{$_POST['sobrenome']}', '{$_POST['email']}', '{$_POST['celular']}', '{$_POST['senha']}', '{$_POST['cep']}', '{$_POST['cidade']}', '{$_POST['endereco']}', '{$_POST['bairro']}', '{$_POST['numero']}', '{$_POST['estado']}', '{$_POST['pais']}', '{$_POST['genero']}')";
 
-        $stmt->bindParam(':nome', $_POST['nome']);
-        $stmt->bindParam(':sobrenome', $_POST['sobrenome']);
-        $stmt->bindParam(':email', $_POST['email']);
-        $stmt->bindParam(':celular', $_POST['celular']);
-        $stmt->bindParam(':senha', $_POST['senha']);
-        $stmt->bindParam(':cep', $_POST['cep']);
-        $stmt->bindParam(':cidade', $_POST['cidade']);
-        $stmt->bindParam(':endereco', $_POST['endereco']);
-        $stmt->bindParam(':bairro', $_POST['bairro']);
-        $stmt->bindParam(':numero', $_POST['numero']);
-        $stmt->bindParam(':estado', $_POST['estado']);
-        $stmt->bindParam(':pais', $_POST['pais']);
-        $stmt->bindParam(':genero', $_POST['genero']);
-
-        if ($stmt->execute()) {
+        if (mysqli_query($conexao, $sqlInsert)) {
             echo "Sucesso!";
-            header('Location: ../inicio.html'); //mudar o redirecionamento, exemplo: redirecionar para um arquivo para criar sessão do usuario, etc
+            header('Location: ../index.html');
             exit();
         } else {
-            echo "Erro ao realizar o cadastro!";
+            echo "Erro ao realizar o cadastro: " . mysqli_error($conexao);
         }
-
-    } catch (PDOException $e) {
-        echo "Erro ao conectar ou executar a query: " . $e->getMessage();
+    } else {
+        echo "Erro ao criar a tabela: " . mysqli_error($conexao);
     }
+} else {
+    echo "Erro na conexão com o banco de dados.";
+}
 ?>
+Ob

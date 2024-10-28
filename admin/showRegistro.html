@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <title>Cadastrar-se</title>
+</head>
+
+<body>
+    <div class="container">
+        <img src="../imagens/celebre2.png" class="imgCelebre">
+        <div class="containerCadastro">
+            <form id="dadosPessoais" action="../php/cadastroFilme.php" method="post">
+                <h1>Registrar Show</h1>
+
+                <div class="form-sections">
+                    <div class="cadastroleft">
+                        <label for="obs">
+                            <input type="text" name="obs" id="obs" placeholder="Observações">
+                        </label>
+
+                        <label for="dataEvento">
+                            <input type="text" name="dataEvento" id="dataEvento" placeholder="Data do evento">
+                        </label>
+
+                        <label for="valor">
+                            <input type="email" name="valor" id="valor" placeholder="Valor">
+                        </label>
+
+                        <label for="localidade">
+                            <input type="tel" name="localidade" id="localidade" placeholder="localidade">
+                        </label>
+
+                        <label for="horario">
+                            <input type="password" name="horario" id="horario" placeholder="horario">
+                        </label>
+                    </div>
+
+                    <div class="cadastroright">
+                        <label for="obs">
+                            <input type="text" name="obs" id="obs" placeholder="Observações">
+                        </label>
+
+                        <label for="dataEvento">
+                            <input type="text" name="dataEvento" id="dataEvento" placeholder="Data do evento">
+                        </label>
+
+                        <label for="valor">
+                            <input type="email" name="valor" id="valor" placeholder="Valor">
+                        </label>
+
+                        <label for="localidade">
+                            <input type="tel" name="localidade" id="localidade" placeholder="localidade">
+                        </label>
+
+                        <label for="horario">
+                            <input type="password" name="horario" id="horario" placeholder="horario">
+                        </label>
+                    </div>
+                </div>
+
+                <input type="submit" class="btn" value="Cadastrar"> <!-- se o form não chegar, mude aqui para button type submit-->
+
+                <p class="direcionarLogin">Já possui cadastro? <a href="login.html">Entrar</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
