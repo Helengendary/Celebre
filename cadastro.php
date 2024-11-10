@@ -1,3 +1,7 @@
+<?php
+include("php/conexao.php")
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -89,7 +93,7 @@
                     </label>
                 </div>
 
-                <input type="submit" class="btn" value="Cadastrar"> <!-- se o form não chegar, mude aqui para button type submit-->
+                <button type="submit" class="btn" value="Cadastrar"></button>
 
                 <p class="direcionarLogin">Já possui cadastro? <a href="login.html">Entrar</a></p>
             </form>

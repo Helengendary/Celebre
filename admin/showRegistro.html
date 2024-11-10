@@ -12,7 +12,7 @@
     <div class="container">
         <img src="../imagens/celebre2.png" class="imgCelebre">
         <div class="containerCadastro">
-            <form id="dadosPessoais" action="../php/cadastroFilme.php" method="post">
+            <form id="dadosPessoais" action="../php/cadastroShow.php" method="post">
                 <h1>Registrar Show</h1>
 
                 <div class="form-sections">
@@ -37,19 +37,11 @@
                             <input type="password" name="horario" id="horario" placeholder="horario">
                         </label>
                     </div>
-
-                    <div class="cadastroright">
-                        <label for="obs">
-                            <input type="text" name="obs" id="obs" placeholder="Observações">
-                        </label>
-                        
-                        <button class="inserirCantor">+ Adicionar cantor</button>
-                    </div>
                 </div>
 
-                <input type="submit" class="btn" value="Cadastrar"> <!-- se o form não chegar, mude aqui para button type submit-->
+                <input type="submit" class="btn" value="Adicionar Apresentador"> <!-- se o form não chegar, mude aqui para button type submit-->
 
-                <p class="direcionarLogin">Já possui cadastro? <a href="login.html">Entrar</a></p>
+                <a href="index.html">cancelar</a>
             </form>
         </div>
     </div>

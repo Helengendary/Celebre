@@ -12,7 +12,7 @@
     <div class="container">
         <img src="../imagens/celebre2.png" class="imgCelebre">
         <div class="containerCadastro">
-            <form id="dadosPessoais" action="php/cadastroUsuarios.php" method="post">
+            <form id="dadosPessoais" action="../php/cadastroAdmin.php" method="post">
                 <h1>Criar conta de administrador</h1>
                 
                 <div class="form-sections">
@@ -28,7 +28,7 @@
                         </label>
 
                         <label for="email">
-                            <input type="email" name="email" id="email" placeholder="Email">
+                            <input type="text" name="email" id="email" placeholder="Email (sem domínio)">
                         </label>
 
                         <label for="celular">
@@ -90,8 +90,6 @@
                 </div>
 
                 <input type="submit" class="btn" value="Cadastrar"> <!-- se o form não chegar, mude aqui para button type submit-->
-
-                <p class="direcionarLogin">Já possui cadastro? <a href="login.html">Entrar</a></p>
             </form>
         </div>
     </div>

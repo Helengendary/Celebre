@@ -21,25 +21,25 @@ $sqlCreateTable = "CREATE TABLE IF NOT EXISTS Usuario (
 )";
 
 if (mysqli_query($conexao, $sqlCreateTable)) {
-    $queryEmail = mysqli_query($conexao, "SELECT * FROM usuario WHERE email = '{$_POST['email']}';");
+    $queryEmail = mysqli_query($conexao, "SELECT * FROM usuario WHERE email = '{$_POST['email']}@admin';");
     $queryCelular = mysqli_query($conexao, "SELECT * FROM usuario WHERE celular = '{$_POST['celular']}';");
     $queryNome = mysqli_query($conexao, "SELECT * FROM usuario WHERE nome = '{$_POST['nome']}' AND sobrenome = '{$_POST['sobrenome']}';");
 
     if ($exibe = mysqli_fetch_array($queryEmail)){
-        echo '<script> alert("Email já cadastrado!"); window.location.href="../cadastro.php";</script>';    
+        echo '<script> alert("Email já cadastrado!"); window.location.href="../admin/cadastro.html";</script>';    
     } else if ($exibe = mysqli_fetch_array($queryCelular)) {
-        echo '<script> alert("Celular já cadastrado!"); window.location.href="../cadastro.php";</script>';    
+        echo '<script> alert("Celular já cadastrado!"); window.location.href="../admin/cadastro.html";</script>';    
     } else if ($exibe = mysqli_fetch_array($queryNome)) { 
-        echo '<script> alert("Nome já está sendo utilizado!"); window.location.href="../cadastro.php";</script>';    
+        echo '<script> alert("Nome já está sendo utilizado!"); window.location.href="../admin/cadastro.html";</script>';    
     } else {
         $sqlInsert = "INSERT INTO Usuario 
             (nome, sobrenome, email, celular, senha, cep, cidade, endereco, bairro, numero, estado, pais, genero) 
             VALUES 
-            ('{$_POST['nome']}', '{$_POST['sobrenome']}', '{$_POST['email']}', '{$_POST['celular']}', '{$_POST['senha']}', '{$_POST['cep']}', '{$_POST['cidade']}', '{$_POST['endereco']}', '{$_POST['bairro']}', '{$_POST['numero']}', '{$_POST['estado']}', '{$_POST['pais']}', '{$_POST['genero']}')";
+            ('{$_POST['nome']}', '{$_POST['sobrenome']}', '{$_POST['email']}@admin', '{$_POST['celular']}', '{$_POST['senha']}', '{$_POST['cep']}', '{$_POST['cidade']}', '{$_POST['endereco']}', '{$_POST['bairro']}', '{$_POST['numero']}', '{$_POST['estado']}', '{$_POST['pais']}', '{$_POST['genero']}')";
     
         if (mysqli_query($conexao, $sqlInsert)) {
             echo "Sucesso!";
-            header('Location: ../index.php');
+            header('Location: ../admin/index.html');
             exit();
         } else {
             echo "Erro ao realizar o cadastro: " . mysqli_error($conexao);
@@ -52,4 +52,4 @@ if (mysqli_query($conexao, $sqlCreateTable)) {
 } else {
     echo "Erro na conexão com o banco de dados.";
 }
-?>
+?> 
