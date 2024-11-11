@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+    include("celebre/conexao.php")
+
+    $consulta = "SELECT * FROM Evento";
+    $con = $mysqli->query ($consulta) or die($mysqli->error);
+?>
+
+
 <html>
 
 <head>
@@ -114,18 +121,20 @@
                     </div>
                 </div>
     
+                <?php while($dado = $con->fetch_array){ ?>
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="../imagens/bruninho.png" alt="Imagem de capa do card">
                     <div class="card-body">
-                        <h5 class="card-title">Bruno Mars</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Música</h6>
-                        <p class="card-text data">DOM, 31/10    21:00</p>
-                        <p class="card-text">Curitiba - PR</p>
+                        <h5 class="card-title"><?php echo $dado ["nome"]?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted" ><?php echo $dado ["obs"]?></h6>
+                        <p class="card-text data"><?php echo $dado ["dataEvento"]?><?php echo $dado ["horario"]?></p>
+                        <p class="card-text"><?php echo $dado ["localidade"]?></p>
                         <div class="button-compra">
                             <button>Comprar</button>
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </main>

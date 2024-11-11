@@ -5,6 +5,7 @@ if ($conexao) {
 
     $sqlCreateTable = "CREATE TABLE IF NOT EXISTS Evento (
         id integer AUTO_INCREMENT primary Key,
+        nome VARCHAR(100),
         obs VARCHAR(255),
         dataEvento VARCHAR(100),
         valor VARCHAR(100),
