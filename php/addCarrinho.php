@@ -18,7 +18,7 @@ if (mysqli_query($conexao, $sqlCreateTable)) {
 
     session_start();
     $usuario_id = $_SESSION['id'];
-    echo $usuario_id;
+
     $queryEvento = mysqli_query($conexao, "SELECT * FROM evento WHERE idEvento = {$_POST['id']}  ;");
     
     if ($exibe = mysqli_fetch_array($queryEvento)) {

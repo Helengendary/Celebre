@@ -18,6 +18,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho - Celebe</title>
     <link rel="stylesheet" href="../css/carrinho.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
     <header>
@@ -57,16 +61,17 @@
 
         <?php if ($con->num_rows > 0): ?>
             <?php while($dado = $con->fetch_array()){ ?>
-                <div class="card">
+                <form class="card" method="post" action="../php/excluirCarrinho.php">
                     <div class="leftCard">
-                        <img src="../imagens/<?php echo $dado ["imgNomeAleatorio"]?>" alt="Foto do evento">                        
+                        <img style="height: 100px; width: 100px;" src="../imagens/<?php echo $dado ["imgNomeAleatorio"]?>" alt="Foto do evento">
+                        <input type="hidden" name="id" value="<?php echo $dado['idCarrinho'] ?>">
                     </div>
                     <div class="rightCard">
                         <div class="options">
                             <p><?php echo $dado ["nome"]?></p>
                         </div>
                         <div class="options">
-                            <p style="color: #800080;"><?php echo $dado ["data"]?>  -  <?php echo $dado ["horario"]?></p>
+                            <p style="color: #800080;"><?php echo $dado ["dataEvento"]?>  -  <?php echo $dado ["horario"]?></p>
                             <small><?php if ($dado ["valor"] == $dado ["preco"]/2) {
                                 echo "meia";
                             } else {
@@ -74,8 +79,9 @@
                             }?></small>
                         </div>                   
                         <p>valor: R$<?php echo $dado ["valor"]?>,00</p>
+                        <button type="submit">Excluir</button>
                     </div>
-                </div>
+                  </form>
             <?php } ?>
         <?php else: ?>
             <p>Nenhum evento encontrado.</p>
@@ -99,7 +105,7 @@
             <p style="margin-top: 10vh; margin-left: 3vh;">Total: R$625</p>
             <p>Forma de pagamento:</p>
             <div class="paymentMethods">
-                <div class="method">
+                <button class="method" data-toggle="modal" data-target="#debito">
                     <p>Débito</p>
                     <div class="methodDescription">
                         <small>Selecionar</small>
@@ -108,8 +114,8 @@
                         </svg>    
                     </div>
                    
-                </div>
-                <div class="method">
+                </button>
+                <button class="method" data-toggle="modal" data-target="#credito">
                     <p>Crédito</p>
                     <div class="methodDescription">
                         <small>Selecionar</small>
@@ -117,8 +123,17 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M31.3174 26.4813L14.9947 37.5101C14.3182 37.9672 13.4318 37.9672 12.7553 37.5101L11.9678 36.978C10.794 36.185 10.794 34.4567 11.9678 33.6637L22.325 26.6655C23.4987 25.8725 23.4987 24.1442 22.325 23.3512L11.9678 16.353C10.794 15.56 10.794 13.8317 11.9678 13.0387L12.7553 12.5066C13.4318 12.0495 14.3182 12.0495 14.9947 12.5066L31.3174 23.5354C31.8954 23.9261 32.2201 24.4559 32.2201 25.0083C32.2201 25.5608 31.8954 26.0906 31.3174 26.4813Z" fill="#231F20" fill-opacity="0.84"/>
                         </svg>    
                     </div>  
-                </div>
-                <div class="method">
+                </button>
+                <button class="method" data-toggle="modal" data-target="#boleto">
+                    <p>Boleto</p>
+                    <div class="methodDescription">
+                        <small>Selecionar</small>
+                        <svg width="37" height="50" viewBox="0 0 37 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M31.3174 26.4813L14.9947 37.5101C14.3182 37.9672 13.4318 37.9672 12.7553 37.5101L11.9678 36.978C10.794 36.185 10.794 34.4567 11.9678 33.6637L22.325 26.6655C23.4987 25.8725 23.4987 24.1442 22.325 23.3512L11.9678 16.353C10.794 15.56 10.794 13.8317 11.9678 13.0387L12.7553 12.5066C13.4318 12.0495 14.3182 12.0495 14.9947 12.5066L31.3174 23.5354C31.8954 23.9261 32.2201 24.4559 32.2201 25.0083C32.2201 25.5608 31.8954 26.0906 31.3174 26.4813Z" fill="#231F20" fill-opacity="0.84"/>
+                        </svg>    
+                    </div>  
+                  </button>
+                <button class="method" data-toggle="modal" data-target="#pix">
                     <p>Pix</p>
                     <div class="methodDescription">
                         <small>Selecionar</small>
@@ -126,9 +141,93 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M31.3174 26.4813L14.9947 37.5101C14.3182 37.9672 13.4318 37.9672 12.7553 37.5101L11.9678 36.978C10.794 36.185 10.794 34.4567 11.9678 33.6637L22.325 26.6655C23.4987 25.8725 23.4987 24.1442 22.325 23.3512L11.9678 16.353C10.794 15.56 10.794 13.8317 11.9678 13.0387L12.7553 12.5066C13.4318 12.0495 14.3182 12.0495 14.9947 12.5066L31.3174 23.5354C31.8954 23.9261 32.2201 24.4559 32.2201 25.0083C32.2201 25.5608 31.8954 26.0906 31.3174 26.4813Z" fill="#231F20" fill-opacity="0.84"/>
                         </svg>    
                     </div>  
-                </div>
+                </button>
             </div>
         </div>
     </div>
+
+    <!-- modal crédito -->
+  <div class="modal fade" id="credito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Crédito
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <!-- modal débito -->
+  <div class="modal fade" id="debito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Débito
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- modal boleto -->
+  <div class="modal fade" id="boleto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Boleto
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- modal pix -->
+  <div class="modal fade" id="pix" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Pix
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

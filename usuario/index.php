@@ -69,7 +69,7 @@
                             <p class="card-text data"><?php echo $dado ["dataEvento"]?><?php echo $dado ["horario"]?></p>
                             <p class="card-text"><?php echo $dado ["localidade"]?></p>
                             <div class="button-compra">
-                                <a href="comprar.php?id=<?php echo $dado['idEvento'];?>">Comprar</a>
+                                <a href="comprar.php?id=<?php echo $dado['idEvento']?>">Comprar</a>
                             </div>
                         </div>
                     </div>
