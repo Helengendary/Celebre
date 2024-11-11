@@ -19,25 +19,19 @@
 
 <body>
     <header>
-
-        <div class="navbar navbar-light shadow-sm">
-          <div class="container d-flex justify-content-between">
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <a href="#" class="navbar-brand d-flex align-items-center">
-              <strong>Álbum</strong>
-            </a>
-          </div>
+        
+        <div class="navbar navbar-light shadow-sm" style="color: white; padding: 10px; justify-content: space-around;">
+            <?php session_start(); echo $_SESSION['nome'];?>
+            <a href="carrinho.php" style="color: white; font-weight: 900;">Carrinho</a>
         </div>
     </header>
 
     <main>
         <div class="inicio">
-            <div class="buscar">
+            <!-- <div class="buscar">
                 <img id="lupa" src="../imagens/lupa.svg" alt="Pesquisar">
                 <input id="pesquisa" type="text" placeholder="Buscar evento">
-            </div>
+            </div> -->
 
             <h1>Bem-vindo(a)</h1>
             <h1>ao</h1>
@@ -45,8 +39,6 @@
             <img id="logo-inicio" src="../imagens/logo-slogan.svg" alt="Celebre: sua porta de acesso para o entretenimento!">
 
             <p id="subtitulo">a sua porta de acesso para o entretenimento!</p>
-
-            <a href="carrinho.php">Carrinho</a>
         </div>
 
         <div class="destaques">

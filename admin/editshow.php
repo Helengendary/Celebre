@@ -1,5 +1,6 @@
 <?php
-    $consulta = "SELECT * FROM Evento E INNER JOIN Imagens I ON I.id = E.imagem";
+    $consulta = "SELECT * FROM Evento E INNER JOIN Imagens I ON I.idImagem = E.imagem";
+    include("../php/conexao.php")
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +17,12 @@
     <div class="container">
         <img src="../imagens/celebre2.png" class="imgCelebre">
         <div class="containerCadastro">
-            <form id="dadosPessoais" action="../php/cadastroShow.php" method="post" enctype="multipart/form-data">
+            <form id="dadosPessoais" action="../php/updateShow.php?id=<?= $_GET['id']?>" method="post" enctype="multipart/form-data">
                 <h1>Editar Show</h1>
                 <?php
                     if (isset($_GET['id'])){
-                    $show_id = mysqli_real_scape_string($conexao, $_GET['id']);
-                    $sql = "SELECT * FROM Evento WHERE id='$show_id";
+                    $show_id = $_GET['id'];
+                    $sql = "SELECT * FROM Evento WHERE idEvento=$show_id";
                     $query = mysqli_query($conexao, $sql);
                     
                     if(mysqli_num_rows($query)>0){
@@ -30,27 +31,27 @@
                 <div class="form-sections">
                     <div class="cadastroleft">
                         <label for="nome">
-                            <input type="text" name="nome" value="<?=$evento=['nome']?>" id="nome" placeholder="Nome do evento">
+                            <input type="text" name="nome" value="<?=$evento['nome']?>" id="nome" placeholder="Nome do evento">
                         </label>
 
                         <label for="obs">
-                            <input type="text" name="obs" value="<?=$evento=['obs']?>" id="obs" placeholder="Observações">
+                            <input type="text" name="obs" value="<?=$evento['obs']?>" id="obs" placeholder="Observações">
                         </label>
 
                         <label for="dataEvento">
-                            <input type="text" name="dataEvento" value="<?=$evento=['dataEvento']?>" id="dataEvento" placeholder="Data do evento">
+                            <input type="text" name="dataEvento" value="<?=$evento['dataEvento']?>" id="dataEvento" placeholder="Data do evento">
                         </label>
 
                         <label for="valor">
-                            <input type="email" name="valor" value="<?=$evento=['valor']?>" id="valor" placeholder="Valor">
+                            <input type="number" name="valor" value="<?=$evento['preco']?>" id="valor" placeholder="Valor">
                         </label>
 
                         <label for="localidade">
-                            <input type="tel" name="localidade" value="<?=$evento=['localidade']?>" id="localidade" placeholder="localidade">
+                            <input type="text" name="localidade" value="<?=$evento['localidade']?>" id="localidade" placeholder="localidade">
                         </label>
 
                         <label for="horario">
-                            <input type="password" name="horario" value="<?=$evento=['horario']?>" id="horario" placeholder="horario">
+                            <input type="text" name="horario" value="<?=$evento['horario']?>" id="horario" placeholder="horario">
                         </label>
                         <?php
                             } else {
@@ -58,14 +59,10 @@
                             }
                         }
                         ?>
-                        <div>
-                            <input type="hidden" name="MAX_FILE_SIZE" value="99999999">
-                            <input type="file" name="arquivo[]" multiple="multiple" />
-                        </div>
                     </div>
                 </div>
 
-                <input type="submit" class="btn" value="Adicionar Apresentador"> <!-- se o form não chegar, mude aqui para button type submit-->
+                <input type="submit" class="btn" value="Editar evento"> <!-- se o form não chegar, mude aqui para button type submit-->
 
                 <a href="index.html">cancelar</a>
             </form>

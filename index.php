@@ -23,7 +23,7 @@
                         <input type="password" placeholder="Senha" name="senha">
                     </div>
                     <div class="footerForm" >
-                        <a href="esqueceuSenha.html">Esqueceu sua senha?</a>
+                        <!-- <a href="esqueceuSenha.html">Esqueceu sua senha?</a> -->
                         <button class="botaoEntrar" type="submit">Entrar</button>
                         <p>Não possui conta?</p>
                         <a href="cadastro.php">Cadastre-se!</a>

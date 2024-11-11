@@ -9,7 +9,7 @@ if ($exibe = mysqli_fetch_array($query)){
     if($_POST["email"] == $exibe[3] && $_POST["senha"] == $exibe[5]){
         session_start();
         $_SESSION['id'] = $exibe[0];
-        $_SESSION['email']= $exibe[3];
+        $_SESSION['nome']= $exibe[1];
         $_SESSION['senha']= $exibe[5];
 
         $caracteres = str_split($usuario);
