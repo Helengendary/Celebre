@@ -1,3 +1,8 @@
+<?php
+    include("../php/conexao.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,11 +43,12 @@
     </header>
 
     <?php
-        if (isset($_GET['id'])){
-        $show_id = mysqli_real_scape_string($conexao, $_GET['id']);
-        $sql = "SELECT * FROM Evento WHERE id='$show_id INNER JOIN Imagens I ON I.id = E.imagem";
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+        echo $id;
+        $sql = "SELECT * FROM Evento E INNER JOIN Imagens I ON I.idImagem = E.imagem WHERE E.idEvento=$id;";
         $query = mysqli_query($conexao, $sql);
-        $mysql = "SELECT * FROM Apresentador WHERE evento='$show_id'";
+        $mysql = "SELECT * FROM Apresentador WHERE evento='$id'";
         $queryapresentador = mysqli_query($conexao, $sql);
         
         if(mysqli_num_rows($query)>0){
@@ -50,25 +56,25 @@
             $apresentador = mysqli_fetch_array($queryapresentador);
      ?>
 
-    <form class="container" action="addCarrinho.php" method="POST">
+    <form class="container" action="../php/addCarrinho.php" method="POST">
         <div>
-            <img src="<?=$evento=['imgNomeAleatorio']?>" alt="Imagem do evento">
-            <input type="hidden" name="id" value="<?= $evento['id'] ?>">
+            <img src="../imagens/<?= $evento['imgNomeAleatorio']?>" alt="Imagem do evento">
+            <input type="hidden" name="id" value="<?= $evento['idEvento'] ?>">
         </div>
 
         <div>
             <div class="options">
-                <p><?=$evento=['nome']?></p>
-                <small><?=$evento=['obs']?></small>
-                <?php while($dado = $con->fetch_array()){ ?>
-                    <small><?=echo $apresentador ["nome"]?></small>
+                <p><?=$evento['nome']?></p>
+                <small><?=$evento['obs']?></small>
+                <?php while($dado = $queryapresentador->fetch_array()){ ?>
+                    <small><?= $apresentador["nome"]?></small>
                 <?php } ?>
             </div>
             <div class="options">
-                <p style="color: #800080;"><?=$evento=['dataEvento']?>  -  <?=$evento=['horario']?></p>
-                <small><?=$evento=['localidade']?></small>
+                <p style="color: #800080;"><?=$evento['dataEvento']?>  -  <?=$evento['horario']?></p>
+                <small><?=$evento['localidade']?></small>
             </div>                   
-            <p>Valor: R$<?=$evento=['valor']?>,00</p>
+            <p>Valor: R$<?=$evento['preco']?>,00</p>
         </div>
         
         <div class="cadastroleftfooter">

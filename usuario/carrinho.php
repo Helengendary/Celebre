@@ -4,10 +4,10 @@
     session_start();
     $usuario_id = $_SESSION['id'];
 
-    $consulta = "SELECT * FROM Carrinho C WHERE usuario = $usuario_id and comprado = 0 INNER JOIN Evento E ON E.id = C.evento INNER JOIN Imagens I ON I.id = E.imagem";
+    $consulta = "SELECT * FROM Carrinho C INNER JOIN Evento E ON E.idEvento = C.evento INNER JOIN Imagens I ON I.idImagem = E.imagem WHERE usuario = $usuario_id and comprado = 0";
     $con = $conexao->query ($consulta) or die($conexao->error);
 
-    $valor = "SELECT SUM(valor) FROM Carrinho C WHERE usuario = $usuario_id and comprado = 0";
+    $valor = "SELECT SUM(valor) as total FROM Carrinho C WHERE usuario = $usuario_id and comprado = 0";
     $valorTotal = $conexao->query ($valor) or die($conexao->error);
 ?>
 
@@ -83,7 +83,15 @@
 
             <div class="total">
                 <h1>Total:</h1>
-                <h1> <?php $valorTotal ?></h1>
+                <?php
+                    if ($row = $valorTotal->fetch_assoc()) {
+                        $total = $row['total'];
+                    } else {
+                        $total = 0; // Define um valor padrão caso não haja resultados
+                    }
+                ?>
+
+                <h1><?php echo $total; ?></h1>
             </div>
         </div>
         <div class="rightContent">

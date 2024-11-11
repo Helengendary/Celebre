@@ -4,15 +4,15 @@ include_once('conexao.php');
 if ($conexao) {
 
     $sqlCreateTable = "CREATE TABLE IF NOT EXISTS Apresentador (
-        id integer AUTO_INCREMENT primary Key,
+        idApresentador integer AUTO_INCREMENT primary Key,
         evento integer,
-        FOREIGN KEY (evento) REFERENCES Evento (id)
+        FOREIGN KEY (evento) REFERENCES Evento (idEvento)
 		ON DELETE SET NULL,
         nome VARCHAR(100)
     );";
     
     if (mysqli_query($conexao, $sqlCreateTable)) {
-        $queryIdEvento = mysqli_query($conexao, "SELECT id FROM evento ORDER BY id DESC LIMIT 1;");
+        $queryIdEvento = mysqli_query($conexao, "SELECT idEvento FROM evento ORDER BY idEvento DESC LIMIT 1;");
 
         if ($exibe = mysqli_fetch_array($queryIdEvento)){
             $sqlInsert = "INSERT INTO Apresentador 

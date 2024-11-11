@@ -1,8 +1,5 @@
 <?php
     include("../php/conexao.php");
-
-    $consulta = "SELECT * FROM Evento E INNER JOIN Imagens I ON I.id = E.imagem";
-    $con = $conexao->query ($consulta) or die($conexao->error);
 ?>
 
 <html>
@@ -48,30 +45,45 @@
             <img id="logo-inicio" src="../imagens/logo-slogan.svg" alt="Celebre: sua porta de acesso para o entretenimento!">
 
             <p id="subtitulo">a sua porta de acesso para o entretenimento!</p>
+
+            <a href="carrinho.php">Carrinho</a>
         </div>
 
         <div class="destaques">
             <p id="titulo-destaques">Destaques</p>
 
             <!-- cards -->
-            <?php if ($con->num_rows > 0): ?>
-                <?php while($dado = $con->fetch_array()){ ?>
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="../imagens/<?php echo $dado ["imgNomeAleatorio"]?>" alt="Imagem de capa do card">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $dado ["nome"]?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted" ><?php echo $dado ["obs"]?></h6>
-                        <p class="card-text data"><?php echo $dado ["dataEvento"]?><?php echo $dado ["horario"]?></p>
-                        <p class="card-text"><?php echo $dado ["localidade"]?></p>
-                        <div class="button-compra">
-                            <button>Comprar</button>
+            <?php 
+            
+            try {
+                $consulta = "SELECT * FROM Evento E INNER JOIN Imagens I ON I.idImagem = E.imagem";
+                $con = $conexao->query ($consulta) or die($conexao->error);
+
+                if ($con->num_rows > 0):
+                    while($dado = $con->fetch_array()){ ?>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../imagens/<?php echo $dado ["imgNomeAleatorio"]?>" alt="Imagem de capa do card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $dado ["nome"]?></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" ><?php echo $dado ["obs"]?></h6>
+                            <p class="card-text data"><?php echo $dado ["dataEvento"]?><?php echo $dado ["horario"]?></p>
+                            <p class="card-text"><?php echo $dado ["localidade"]?></p>
+                            <div class="button-compra">
+                                <a href="comprar.php?id=<?php echo $dado['idEvento'];?>">Comprar</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php } ?>
-            <?php else: ?>
-                <p>Nenhum evento encontrado.</p>
-            <?php endif; ?>
+                    <?php } ?>
+                <?php else: ?>
+                    <p>Nenhum evento encontrado.</p>
+                <?php endif; 
+
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1146) { // Código de erro 1146 = "Table doesn't exist"
+                    echo "<p>Nenhum evento registrado.</p>";
+                }
+            }?>
+            
         </div>
     </main>
 

@@ -25,9 +25,9 @@ if ($exibe = mysqli_fetch_array($query)){
         }
 
         if ($dominio == "admin") {
-            echo '<script>window.location.href="../admin/index.php"; alert("Logado como '. $exibe[0] . ' ' . $exibe[1] .'"); </script>';    
+            echo '<script>window.location.href="../admin/index.php"; alert("Logado como '. $exibe[1] . ' ' . $exibe[2] .'"); </script>';    
         } else {
-            echo '<script>window.location.href="../usuario/index.php"; alert("Logado como '. $exibe[0] . ' ' . $exibe[1] .'"); </script>';    
+            echo '<script>window.location.href="../usuario/index.php"; alert("Logado como '. $exibe[1] . ' ' . $exibe[2] .'"); </script>';    
         }
 
 

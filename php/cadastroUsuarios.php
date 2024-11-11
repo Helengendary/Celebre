@@ -4,7 +4,7 @@ include_once('conexao.php');
 if ($conexao) {
 
 $sqlCreateTable = "CREATE TABLE IF NOT EXISTS Usuario (
-    id integer AUTO_INCREMENT primary Key,
+    idUsuario integer AUTO_INCREMENT primary Key,
     nome VARCHAR(100),
     sobrenome VARCHAR(100),
     email VARCHAR(100),
