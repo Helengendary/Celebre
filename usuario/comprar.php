@@ -36,21 +36,57 @@
         </div>
         
     </header>
-    <div class="container">
+
+    <?php
+        if (isset($_GET['id'])){
+        $show_id = mysqli_real_scape_string($conexao, $_GET['id']);
+        $sql = "SELECT * FROM Evento WHERE id='$show_id INNER JOIN Imagens I ON I.id = E.imagem";
+        $query = mysqli_query($conexao, $sql);
+        $mysql = "SELECT * FROM Apresentador WHERE evento='$show_id'";
+        $queryapresentador = mysqli_query($conexao, $sql);
+        
+        if(mysqli_num_rows($query)>0){
+            $evento = mysqli_fetch_array($query);
+            $apresentador = mysqli_fetch_array($queryapresentador);
+     ?>
+
+    <form class="container" action="addCarrinho.php" method="POST">
         <div>
-            <img src="../imagens/bruninho.png" alt="Imagem do evento">
+            <img src="<?=$evento=['imgNomeAleatorio']?>" alt="Imagem do evento">
+            <input type="hidden" name="id" value="<?= $evento['id'] ?>">
         </div>
+
         <div>
             <div class="options">
-                <p>Bruno Mars</p>
-                <small>Música</small>
+                <p><?=$evento=['nome']?></p>
+                <small><?=$evento=['obs']?></small>
+                <?php while($dado = $con->fetch_array()){ ?>
+                    <small><?=echo $apresentador ["nome"]?></small>
+                <?php } ?>
             </div>
             <div class="options">
-                <p style="color: #800080;">DOM 31/10  -  21:00h</p>
-                <small>R. Ubaldino do Amaral, 63 - Alto da Glória, Curitiba - PR</small>
+                <p style="color: #800080;"><?=$evento=['dataEvento']?>  -  <?=$evento=['horario']?></p>
+                <small><?=$evento=['localidade']?></small>
             </div>                   
-            <p>Valor: R$625,00</p>
+            <p>Valor: R$<?=$evento=['valor']?>,00</p>
         </div>
-    </div>
+        
+        <div class="cadastroleftfooter">
+            <p>Tipo do ingresso:</p>
+            <label for="genero">
+                <input type="radio" name="tipo" value="meia"> Meia
+                <input type="radio" name="tipo" value="inteira"> inteira
+            </label>
+        </div>
+
+        <button class="buttonCont" type="submit">Adionar ao carrinho</button>
+    </form>
+
+    <<?php
+        } else {
+            echo "<h5>Registro não econtrado!</h5>";
+        }
+    }
+    ?>
 </body>
 </html>

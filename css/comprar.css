@@ -47,3 +47,9 @@ header{
     display: flex;
     flex-direction: column;  
 }
+.container small {
+    font-size: 20px;
+}
+.buttonCont {
+    width: 150px;
+}

@@ -14,7 +14,7 @@ if ($conexao) {
         nome VARCHAR(255),
         obs VARCHAR(255),
         dataEvento VARCHAR(100),
-        valor VARCHAR(100),      
+        preco FLOAT,      
         localidade VARCHAR(100),
         horario VARCHAR(100),
         imagem INT,
@@ -54,7 +54,7 @@ if ($conexao) {
         $id_imgTable_last = mysqli_insert_id($conexao);
 
         $sqlInsert = "INSERT INTO Evento 
-            (nome, obs, dataEvento, valor, localidade, horario, imagem) VALUES 
+            (nome, obs, dataEvento, preco, localidade, horario, imagem) VALUES 
             ('{$_POST['nome']}', '{$_POST['obs']}', '{$_POST['dataEvento']}', '{$_POST['valor']}', '{$_POST['localidade']}', '{$_POST['horario']}', $id_imgTable_last)";
 
         if (mysqli_query($conexao, $sqlInsert)) {
