@@ -6,10 +6,10 @@ $senha = $_POST["senha"];
 $query = mysqli_query($conexao, "SELECT * FROM usuario where email = '$usuario';");
 
 if ($exibe = mysqli_fetch_array($query)){
-    if($_POST["email"] == $exibe[2] && $_POST["senha"] == $exibe[4]){
+    if($_POST["email"] == $exibe[3] && $_POST["senha"] == $exibe[5]){
         session_start();
-        $_SESSION['email']= $exibe[1];
-        $_SESSION['senha']= $exibe[2];
+        $_SESSION['email']= $exibe[3];
+        $_SESSION['senha']= $exibe[5];
 
         $caracteres = str_split($usuario);
         $arroba = false;

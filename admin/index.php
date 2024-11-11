@@ -55,7 +55,7 @@
                         <p class="card-text data"><?php echo $dado ["dataEvento"]?><?php echo $dado ["horario"]?></p>
                         <p class="card-text"><?php echo $dado ["localidade"]?></p>
                         <div class="button-compra">
-                            <button>Editar</button>
+                            <a href="editshow.php">Editar</a>
                             <button>Excluir</button>
                         </div>
                     </div>
