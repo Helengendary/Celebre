@@ -12,11 +12,15 @@
     <div class="container">
         <img src="../imagens/celebre2.png" class="imgCelebre">
         <div class="containerCadastro">
-            <form id="dadosPessoais" action="../php/cadastroShow.php" method="post">
+            <form id="dadosPessoais" action="../php/cadastroShow.php" method="post" enctype="multipart/form-data">
                 <h1>Registrar Show</h1>
 
                 <div class="form-sections">
                     <div class="cadastroleft">
+                        <label for="nome">
+                            <input type="text" name="nome" id="nome" placeholder="Nome do evento">
+                        </label>
+
                         <label for="obs">
                             <input type="text" name="obs" id="obs" placeholder="Observações">
                         </label>
@@ -36,6 +40,11 @@
                         <label for="horario">
                             <input type="password" name="horario" id="horario" placeholder="horario">
                         </label>
+
+                        <div>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="99999999">
+                            <input type="file" name="arquivo[]" multiple="multiple" />
+                        </div>
                     </div>
                 </div>
 

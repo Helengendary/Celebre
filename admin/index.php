@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleadmin.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Fontes -->
@@ -35,19 +35,10 @@
         </div>
     </header>
 
-    <main>
+    <main>  
         <div class="inicio">
-            <div class="buscar">
-                <img id="lupa" src="../imagens/lupa.svg" alt="Pesquisar">
-                <input id="pesquisa" type="text" placeholder="Buscar evento">
-            </div>
-
-            <h1>Bem-vindo(a)</h1>
-            <h1>ao</h1>
-
-            <img id="logo-inicio" src="../imagens/logo-slogan.svg" alt="Celebre: sua porta de acesso para o entretenimento!">
-
-            <p id="subtitulo">a sua porta de acesso para o entretenimento!</p>
+            <a id="registrar" href="showRegistro.html">Registrar evento</a>
+            <a id="registrar" href="cadastro.html">Novo administrador</a>
         </div>
 
         <div class="destaques">
@@ -64,7 +55,8 @@
                         <p class="card-text data"><?php echo $dado ["dataEvento"]?><?php echo $dado ["horario"]?></p>
                         <p class="card-text"><?php echo $dado ["localidade"]?></p>
                         <div class="button-compra">
-                            <button>Comprar</button>
+                            <button>Editar</button>
+                            <button>Excluir</button>
                         </div>
                     </div>
                 </div>
